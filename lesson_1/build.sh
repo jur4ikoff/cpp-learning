@@ -9,5 +9,5 @@ else
     filename=$1
 fi
 
-# CPPFLAGS="-Wall -Werror"
-clang++ "$filename" -o app.exe
+CPPFLAGS="-Wall"
+clang++ "$CFLAGS" "$filename" -o app.exe
