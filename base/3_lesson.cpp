@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 #define ERR_OK 0
 #define EPS 10e-9
@@ -123,11 +124,63 @@ int print_calendar(void)
     int number = 1;
     for (size_t i = n; i <= 7 && number <= k; i++)
     {
-        std::cout << " " << number;
+        if (i < 7 && number < k)
+            std::cout << " " << number << " ";
+        else
+            std::cout << " " << number << std::endl;
         number++;
+    }
+
+    size_t iter = 0;
+    for (; number <= k; number++)
+    {
+        if (iter != 0)
+            std::cout << " ";
+        if (number < 10)
+            std::cout << " " << number;
+        else
+            std::cout << number;
+
+        if (iter == 6)
+        {
+            std::cout << std::endl;
+            iter = 0;
+        }
+        else
+            iter++;
     }
     std::cout << std::endl;
 
+    return 0;
+}
+
+int digit_sum(void)
+{
+    int n;
+    std::cin >> n;
+    int sum = 0;
+    while (n > 0)
+    {
+        sum += n % 10;
+        n /= 10;
+    }
+    std::cout << sum <<  std::endl;
+    return 0;
+}
+
+int logariphm(void)
+{
+    int n;
+    double res = 0;
+    std::cin >> n;
+
+    for (size_t i = 1; i <= static_cast<size_t>(n); i++)
+    {
+        
+        res = res + static_cast<double>(pow(-1, i + 1)) / i; 
+    }
+
+    std::cout << res << std::endl;
     return 0;
 }
 
@@ -138,6 +191,7 @@ int main(void)
     //  test_2();
     //  task_1();
     // task_2();
-    print_calendar();
+    // print_calenda();
+    logariphm();
     return rc;
 }
