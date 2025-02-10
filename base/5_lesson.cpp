@@ -61,6 +61,40 @@ std::string CommonPrefix(const std::vector<std::string> &words)
     return prefix;
 }
 
+std::string Join(const std::vector<std::string> &tokens, char delimiter)
+{
+    std::string result;
+    for (size_t i = 0; i < tokens.size(); i++)
+    {
+        if (i + 1 < tokens.size())
+        {
+            result += tokens[i];
+            result += delimiter;
+        }
+        else
+        {
+            result += tokens[i];
+        }
+    }
+
+    return result;
+}
+
+std::vector<std::vector<int>> Transpose(const std::vector<std::vector<int>> &matrix)
+{
+    std::vector<std::vector<int>> result(matrix.size(), std::vector<int>(matrix[0].size()));
+
+    for (size_t i = 0; i < matrix.size(); i++)
+    {
+        for (size_t j = 0; j < matrix[0].size(); j++)
+        {
+            result[i][j] = matrix[j][i];
+        }
+    }
+
+    return result;
+}
+
 int test_1()
 {
     string_arr_t data = {"abra", "cada", "bra"};
@@ -72,7 +106,6 @@ int main(void)
 {
     std::vector<std::string> words = {"apecot", "apelsin", "apele"};
 
-    std::string res = CommonPrefix(words);
-    std::cout << res << std::endl;
+    std::cout << Join({"What", "is", "your", "name?"}, '_') << std::endl;
     return 0;
 }
